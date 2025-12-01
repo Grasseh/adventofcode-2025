@@ -9,25 +9,21 @@ module Tests
 
     def example_a
       [
-        '1000',
-        '2000',
-        '3000',
-        '',
-        '4000',
-        '',
-        '5000',
-        '6000',
-        '',
-        '7000',
-        '8000',
-        '9000',
-        '',
-        '10000'
+        'L68',
+        'L30',
+        'R48',
+        'L5',
+        'R60',
+        'L55',
+        'L1',
+        'L99',
+        'R14',
+        'L82'
       ]
     end
 
     def test_problem_a
-      expected = 24000
+      expected = 3
 
       assert_equal(
         expected,

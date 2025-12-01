@@ -1,22 +1,40 @@
 require 'active_support'
 require 'active_support/core_ext'
+require 'pry'
 
 module Solvers
   class Solver1
     def solve_a(input, _opts = {})
-      get_calories(input).max
+      position = 50
+      target_pos = 0
+      target_count = 0
+
+      input.each do |line|
+        position = pivot(position, line.split('\n').first)
+
+        target_count += 1 if position == target_pos
+      end
+
+      target_count
     end
 
     def solve_b(input, _opts = {})
-      get_calories(input).sort.last(3).sum
+      return 0
     end
 
-    def get_calories(input)
-      elves = input.split("\n")
+    def pivot(starting_pos, operation)
+      movement = parse(operation)
+      (starting_pos + 100 + movement) % 100
+    end
 
-      elves.map do |elf|
-        elf.map(&:chomp).map(&:to_i).sum
+    def parse(operation)
+      movement = operation[1..-1].to_i
+
+      if operation[0] == 'L'
+        movement *= -1
       end
+
+      movement
     end
   end
 end
