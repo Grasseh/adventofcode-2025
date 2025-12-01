@@ -8,9 +8,9 @@ jobs:
     steps:
     - uses: actions/checkout@v5
     - name: Set up Ruby 3.1j
-      uses: actions/setup-ruby@v1
+      uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.1.x
+        ruby-version: 3.4.7
     - name: Set up packages
       run: |
         sudo apt install libncurses5-dev -y
