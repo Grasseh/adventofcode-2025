@@ -24,7 +24,7 @@ module Solvers
 
     def pivot(starting_pos, operation)
       movement = parse(operation)
-      (starting_pos + 100 + movement) % 100
+      (starting_pos + movement) % 100
     end
 
     def parse(operation)
