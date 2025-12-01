@@ -8,18 +8,18 @@ module Tests
     end
 
     def example_a
-      [
-        'L68',
-        'L30',
-        'R48',
-        'L5',
-        'R60',
-        'L55',
-        'L1',
-        'L99',
-        'R14',
-        'L82'
-      ]
+      %w(
+        L68
+        L30
+        R48
+        L5
+        R60
+        L55
+        L1
+        L99
+        R14
+        L8
+      )
     end
 
     def test_problem_a

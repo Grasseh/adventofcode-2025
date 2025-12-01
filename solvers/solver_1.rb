@@ -43,7 +43,7 @@ module Solvers
         movement *= -1
       end
 
-      clicks = ((starting_pos + movement) / 100)
+      ((starting_pos + movement) / 100)
     end
 
     def pivot(starting_pos, movement)
