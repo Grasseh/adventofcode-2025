@@ -18,7 +18,7 @@ module Tests
         L1
         L99
         R14
-        L8
+        L82
       )
     end
 
