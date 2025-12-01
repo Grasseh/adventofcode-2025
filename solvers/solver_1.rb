@@ -10,7 +10,8 @@ module Solvers
       target_count = 0
 
       input.each do |line|
-        position = pivot(position, line.split('\n').first)
+        movement = parse(line.split('\n').first)
+        position = pivot(position, movement)
 
         target_count += 1 if position == target_pos
       end
@@ -19,16 +20,38 @@ module Solvers
     end
 
     def solve_b(input, _opts = {})
-      return 0
+      position = 50
+      target_count = 0
+
+      input.each do |line|
+        movement = parse(line.split('\n').first)
+        clicks = clicks(position, movement)
+        position = pivot(position, movement)
+
+        target_count += clicks
+      end
+
+      target_count
     end
 
-    def pivot(starting_pos, operation)
-      movement = parse(operation)
+    def clicks(starting_pos, movement)
+      if movement.negative?
+        unless starting_pos.zero?
+          starting_pos = 100 - starting_pos
+        end
+
+        movement *= -1
+      end
+
+      clicks = ((starting_pos + movement) / 100)
+    end
+
+    def pivot(starting_pos, movement)
       (starting_pos + movement) % 100
     end
 
     def parse(operation)
-      movement = operation[1..-1].to_i
+      movement = operation[1..].to_i
 
       if operation[0] == 'L'
         movement *= -1
