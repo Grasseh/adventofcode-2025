@@ -5,7 +5,20 @@ require 'pry'
 module Solvers
   class Solver2
     def solve_a(input, _opts = {})
+      solve(input) do |divisible, size|
+        divisible == 2 && (size % divisible).zero?
+      end
+    end
+
+    def solve_b(input, _opts = {})
+      solve(input) do |divisible, size|
+        (size % divisible).zero?
+      end
+    end
+
+    def solve(input, &)
       sum = 0
+
       input.first.strip.split(',').each do |identifiers|
         identifiers = identifiers.split('-')
 
@@ -14,32 +27,20 @@ module Solvers
         range.each do |identifier|
           size = Math.log10(identifier).ceil
 
-          if size.odd?
-            next
+          divisibles = (2..size).select { |divisible| yield(divisible, size) }
+
+          if divisibles.any? { |divisible| sequence?(divisible, identifier) }
+            sum += identifier
           end
-
-          top_half = get_top_half(identifier, size)
-          bottom_half = get_bottom_half(identifier, size, top_half)
-
-          next unless top_half == bottom_half
-
-          sum = add_id(top_half, sum)
         end
       end
 
       sum
     end
 
-    def get_top_half(number, size)
-      number / (10 ** (size / 2))
-    end
-
-    def get_bottom_half(number, size, top_half)
-      number - top_half * (10 ** (size / 2))
-    end
-
-    def add_id(range, sum)
-      sum + "#{range}#{range}".to_i
+    def sequence?(divisible, identifier)
+      groups = identifier.to_s.chars.in_groups(divisible).to_a.map(&:join)
+      groups.all? { |x| x == groups[0] }
     end
   end
 end

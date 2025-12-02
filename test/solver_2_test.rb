@@ -33,11 +33,11 @@ module Tests
     end
 
     def test_problem_b
-      expected = 6
+      expected = 4174379265
 
       assert_equal(
         expected,
-        @solver.solve_b(wrap_array_input(*example_a))
+        @solver.solve_b(wrap_line_input(example_a.join))
       )
     end
   end
