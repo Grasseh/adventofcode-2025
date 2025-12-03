@@ -19,7 +19,7 @@ module Solvers
     end
 
     def highest_joltage(line, battery_count)
-      biggests = ["0"] * battery_count
+      biggests = ['0'] * battery_count
 
       line.chars.each do |char|
         inserted = false
@@ -30,7 +30,10 @@ module Solvers
 
           next unless current > previous
 
-          biggests[index - 1..battery_count - 2] = biggests[index..battery_count - 1]
+          biggests[index - 1..battery_count - 2] = biggests[
+            index..battery_count - 1
+          ]
+
           biggests[battery_count - 1] = char
           inserted = true
           break
