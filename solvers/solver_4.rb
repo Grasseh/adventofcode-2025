@@ -5,6 +5,31 @@ require 'pry'
 module Solvers
   class Solver4
     def solve_a(input, _opts = {})
+      detect_accessible_rolls(input).count
+    end
+
+    def solve_b(input, _opts = {})
+      sum = 0
+      x_size = input.first.strip.size
+
+      loop do
+        accessible_rolls = detect_accessible_rolls(input)
+        done = accessible_rolls.count.zero?
+
+        break if done
+
+        sum += accessible_rolls.count
+
+        accessible_rolls.each do |roll_1d_index|
+          x_index, y_index = index_2d(roll_1d_index, x_size)
+          input[y_index][x_index] = '.'
+        end
+      end
+
+      sum
+    end
+
+    def detect_accessible_rolls(input)
       y_size = input.size
       x_size = input.first.strip.size
       roll_neighbors = [0] * x_size * y_size
@@ -26,15 +51,15 @@ module Solvers
         end
       end
 
-      roll_indexes.select { |x| roll_neighbors[x] < 4}.count
-    end
-
-    def solve_b(_input, _opts = {})
-      6
+      roll_indexes.select { |x| roll_neighbors[x] < 4 }
     end
 
     def index_1d(x_index, y_index, x_size)
       x_index + y_index * x_size
+    end
+
+    def index_2d(x_index, x_size)
+      [x_index % x_size, x_index / x_size]
     end
 
     def add_roll_neighbors(roll_neighbors, x_index, y_index, x_size, y_size)
