@@ -24,14 +24,14 @@ module Solvers
       line.chars.each do |char|
         inserted = false
 
-        (1..battery_count - 1).each do |index|
+        (1..(battery_count - 1)).each do |index|
           previous = biggests[index - 1]
           current = biggests[index]
 
           next unless current > previous
 
-          biggests[index - 1..battery_count - 2] = biggests[
-            index..battery_count - 1
+          biggests[(index - 1)..(battery_count - 2)] = biggests[
+            index..(battery_count - 1)
           ]
 
           biggests[battery_count - 1] = char

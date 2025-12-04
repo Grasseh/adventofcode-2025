@@ -14,7 +14,7 @@ module Solvers
 
       loop do
         accessible_rolls = detect_accessible_rolls(input)
-        done = accessible_rolls.count.zero?
+        done = accessible_rolls.count.none?
 
         break if done
 
