@@ -1,6 +1,6 @@
 # Advent of Code 2025
 
-[![Actions Status](https://github.com/grasseh/advent-of-code-2025/workflows/Ruby/badge.svg)](https://github.com/grasseh/advent-of-code-2025/actions)
+[![Ruby](https://github.com/Grasseh/adventofcode-2025/actions/workflows/ruby.yml/badge.svg)](https://github.com/Grasseh/adventofcode-2025/actions/workflows/ruby.yml)
 
 Contains my personal solutions to Advent of code problems.
 
