@@ -9,10 +9,10 @@ module Tests
 
     def example_a
       [
-        '123 328  51 64',
-        '45 64  387 23',
-        '6 98  215 314',
-        '*   +   *   +'
+        '123 328  51 64 ',
+        ' 45 64  387 23 ',
+        '  6 98  215 314',
+        '*   +   *   +  '
       ]
     end
 
@@ -26,7 +26,7 @@ module Tests
     end
 
     def test_problem_b
-      expected = 14
+      expected = 3263827
 
       assert_equal(
         expected,
