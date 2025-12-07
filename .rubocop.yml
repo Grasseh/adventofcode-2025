@@ -102,5 +102,7 @@ Style/PercentLiteralDelimiters:
     '%Q': '{}'
 Style/RaiseArgs:
   Enabled: false
+Style/RedundantParentheses:
+  Enabled: false
 Style/SingleArgumentDig:
   Enabled: false
