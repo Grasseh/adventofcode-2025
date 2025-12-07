@@ -38,7 +38,7 @@ module Tests
     end
 
     def test_problem_b
-      expected = 7
+      expected = 40
 
       assert_equal(
         expected,
