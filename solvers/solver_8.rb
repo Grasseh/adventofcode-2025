@@ -82,7 +82,7 @@ module Solvers
 
       circuits = input.each_with_index.map { |_, index| [index] }
 
-      latest_short_circuit = { first: 0, second: 0}
+      latest_short_circuit = { first: 0, second: 0 }
       distance_index = 0
 
       loop do
@@ -105,7 +105,7 @@ module Solvers
       end
 
       input[latest_short_circuit.dig(:first)].first *
-        input[latest_short_circuit.dig(:second)].first 
+        input[latest_short_circuit.dig(:second)].first
     end
   end
 end
