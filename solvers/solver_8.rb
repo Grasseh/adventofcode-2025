@@ -23,14 +23,11 @@ module Solvers
               line, input[pair_index]
             )
           }
-
-          distances = distances.sort_by { |x| x.dig(:squared_distance) }
-
-          next if distances.count <= connections
-
-          distances.pop
         end
       end
+
+      distances = distances.sort_by { |x| x.dig(:squared_distance) }
+      distances = distances[0..(connections - 1)]
 
       circuits = input.each_with_index.map { |_, index| [index] }
 
